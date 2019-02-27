@@ -71,5 +71,17 @@ final class AlbumTest extends TestCase
 
         $this->assertEquals(-1, $kidzbop->badRating());
     }
+    public function testAmericanIdiotAlbumHasGoodRating(): void
+    {
+        $americanIdiot = new AmericanIdiotAlbum();
 
+        $this->assertEquals(1, $americanIdiot->goodRating());
+    }
+
+    public function testAmericanIdiotAlbumHasBadRatin(): void
+    {
+        $americanIdiot = new  AmericanIdiotAlbum();
+
+        $this->assertEquals(-1, $americanIdiot->badRating());
+    }
 }
