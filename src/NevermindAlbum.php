@@ -3,26 +3,19 @@
  * Created by PhpStorm.
  * User: MAlzate
  * Date: 2/26/2019
- * Time: 7:28 PM
+ * Time: 8:20 PM
  */
-declare(strict_types=1);
 
-abstract class Album
+final class NevermindAlbum extends Album
 {
-    public $artist; //tested by assertClassHasAttribute
-    public $title;
-    public $year;
-    public $totalsongs;
-    public $genre;
-
     public function goodRating(): int //tested by assertTrue method_exists (first)
     {
-
+        return 1;
     }
 
     public function badRating(): int //tested by assertTrue method_exists (second)
     {
-
+        return -1;
     }
 
 }
