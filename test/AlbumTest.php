@@ -32,6 +32,39 @@ final class AlbumTest extends TestCase
     {
         $this->assertClassHasAttribute('genre', Album::class);
     }
+
+    public function testCanCreateAmericanIdiotAlbum(): void
+    {
+        $album = new AmericanIdiotAlbum();
+        $this->assertInstanceOf(AmericanIdiotAlbum::class, $album);
+    }
+    public function testCanCreateNevermindAlbum(): void
+    {
+        $album = new NevermindAlbum();
+        $this->assertInstanceOf(NevermindAlbum::class, $album);
+    }
+    public function testCanCreateBecausetheInternetAlbum(): void
+    {
+        $album = new BecausetheInternetAlbum();
+        $this->assertInstanceOf(BecausetheInternetAlbum::class, $album);
+    }
+    public function testCanCreateFuneralAlbum(): void
+    {
+        $album = new FuneralAlbum();
+        $this->assertInstanceOf(FuneralAlbum::class, $album);
+    }
+    public function testCanCreateBangerzAlbum(): void
+    {
+        $album = new BangerzAlbum();
+        $this->assertInstanceOf(BangerzAlbum::class, $album);
+    }
+    public function testCanCreateKidzBopChristmasAlbum(): void
+    {
+        $album = new KidzBopChristmasAlbum();
+        $this->assertInstanceOf(KidzBopChristmasAlbum::class, $album);
+    }
+
+
     public function testAlbumHasGoodRating(): void
     {
         $this->assertTrue(
