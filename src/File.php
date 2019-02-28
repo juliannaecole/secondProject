@@ -19,11 +19,11 @@ class File
 
                 if($count == 0)
                 {
-                    $fieldNames = $row;  //row goes to fieldNames, row must contain fieldNames
+                    $fieldNames = $row;  
                 } else
                     {
-                        $records[] = (object) array_combine($fieldNames, $row);  //if it's not 0, array combines row with field names (trying to get make, model, and year as header for table, information will not be 0
-                    } // (object) is called type casting, whatever data type you put in, it's going to try to take what's in array ( ) and turn it into an object
+                        $records[] = (object) array_combine($fieldNames, $row);
+                    }
                     $count++;
             }
             fclose($handle);
