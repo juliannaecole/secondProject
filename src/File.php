@@ -19,7 +19,7 @@ class File
 
                 if($count == 0)
                 {
-                    $fieldNames = $row;  
+                    $fieldNames = $row;
                 } else
                     {
                         $records[] = (object) array_combine($fieldNames, $row);

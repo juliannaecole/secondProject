@@ -84,4 +84,60 @@ final class AlbumTest extends TestCase
 
         $this->assertEquals(-1, $americanIdiot->badRating());
     }
+
+    public function testBangerzAlbumHasGoodRating(): void
+    {
+        $bangerz = new BangerzAlbum();
+
+        $this->assertEquals(1, $bangerz->goodRating());
+    }
+
+    public function testBangerzAlbumHasBadRating(): void
+    {
+        $bangerz = new BangerzAlbum();
+
+        $this->assertEquals(-1, $bangerz->badRating());
+    }
+
+    public function testBecausetheInternetAlbumHasGoodRating(): void
+    {
+        $becausetheInternet = new BecausetheInternetAlbum();
+
+        $this->assertEquals(1, $becausetheInternet->goodRating());
+    }
+
+    public function testBecausetheInternetAlbumHasBadRating(): void
+    {
+        $becausetheInternet = new BecausetheInternetAlbum();
+
+        $this->assertEquals(-1, $becausetheInternet->badRating());
+}
+
+    public function testFuneralAlbumHasGoodRating(): void
+    {
+        $funeral = new FuneralAlbum();
+
+        $this->assertEquals(1, $funeral->goodRating());
+    }
+
+    public function testFuneralAlbumHasBadRating(): void
+    {
+        $funeral = new FuneralAlbum();
+
+        $this->assertEquals(-1, $funeral->badRating());
+    }
+
+    public function testPortOfMorrowAlbumHasGoodRating(): void
+    {
+        $portOfMorrow = new NevermindAlbum();
+
+        $this->assertEquals(1, $portOfMorrow->goodRating());
+    }
+
+    public function testPortOfMorrowAlbumHasBadRating(): void
+    {
+        $portOfMorrow = new PortOfMorrowAlbum();
+
+        $this->assertEquals(-1, $portOfMorrow->badRating());
+    }
 }
