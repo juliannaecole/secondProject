@@ -30,9 +30,23 @@ final class FileTest extends TestCase
 
     public function testReadCSVtoArray()  //"does it read it, does it turn back an array"
     {
-        $records = File::readCSVtoArray("data/data.csv",'Album'); //the file that you want to read, calling the function and passing a string that's just 'Car'
+        $records = File::readCSVtoArray("data/data.csv", 'Album'); //the file that you want to read, calling the function and passing a string that's just 'Car'
         print_r($records);
 
     }
+    public function testPrintArrayKeysExists()
+    {
+        $this->assertTrue(
+            method_exists(File::class, 'printArrayAsTable')  //test that the file can be read
+        );
+
+    }
+    public function testPrintArrayAsTable()
+    {
+        $records = File::readCSVtoArray("data/data.csv", 'Album');
+        $table = File::printArrayAsTable($records);
+        echo $table;
+    }
 
 }
+
