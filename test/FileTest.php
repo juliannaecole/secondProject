@@ -48,5 +48,12 @@ final class FileTest extends TestCase
         echo $table;
     }
 
+    public function testArrayPrintsKeys()
+    {
+        $records = File::readCSVtoArray("data/data.csv", 'Album');
+        $fieldNames = File::printArrayKeys($records);
+        print_r($fieldNames);
+    }
+
 }
 

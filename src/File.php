@@ -30,6 +30,13 @@ class File
         return $records;
     }
 
+    public static function printArrayKeys(Array $records): array
+    {
+        $fieldNames = array_keys($records[0]);
+        return $fieldNames;
+    }
+
+
      public static function printArrayAsTable(Array $records): string
     {
         /*
@@ -41,15 +48,23 @@ class File
             echo "\n", $value['artist'], "\t\t\t\t\t\t\t\t", $value['title'], "\t\t\t\t\t\t\t", $value['year'], "\t\t\t\t\t\t\t", $value['totalsongs'], "\t\t\t\t\t\t\t", $value['genre'];
         }
         */
-        $table = "<table class=\"table\"><thead class=\"thead-dark\" style=\"font-family: 'Poppins', sans-serif;\"><tr><th>Artist</th><th>Title</th><th>Year</th><th>Total Songs</th><th>Genre</th></tr></thead><tbody style=\"font-family: 'Poppins', sans-serif;\">";
-        foreach ($records as $value)
+        $fieldNames = array_keys($records[0]);
+
+        $table = "<table class=\"table\"><thead class=\"thead-dark\" style=\"font-family: 'Poppins', sans-serif;\"><tr>";
+
+        foreach ($fieldNames as $columnname)
+        {
+            $table .= "    <th>" . $columnname . "</th>";
+        }
+        $table .= "</tr></thead><tbody style=\"font-family: 'Poppins', sans-serif;\">";
+        foreach ($records as $row)
         {
             $table .= "<tr>";
-            $table .= "    <td>" . $value['artist'] . "</td>";
-            $table .= "    <td>" . $value['title'] . "</td>";
-            $table .= "    <td>" . $value['year'] . "</td>";
-            $table .= "    <td>" . $value['totalsongs'] . "</td>";
-            $table .= "    <td>" . $value['genre'] . "</td>";
+            $table .= "    <td>" . $row['Artist'] . "</td>";
+            $table .= "    <td>" . $row['Title'] . "</td>";
+            $table .= "    <td>" . $row['Year'] . "</td>";
+            $table .= "    <td>" . $row['Total Songs'] . "</td>";
+            $table .= "    <td>" . $row['Genre'] . "</td>";
             $table .= "</tr>";
         }
 
@@ -57,5 +72,7 @@ class File
         echo $table;
         return $table;
     }
+
+
 
 }
