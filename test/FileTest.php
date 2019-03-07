@@ -30,8 +30,8 @@ final class FileTest extends TestCase
 
     public function testReadCSVtoArray()
     {
-        $records = File::readCSVtoArray("data/data.csv", 'Album');
-        print_r($records);
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r($albums);
 
     }
     public function testPrintArrayKeysExists()
@@ -51,15 +51,15 @@ final class FileTest extends TestCase
 
     public function testPrintArrayAsTable()
     {
-        $records = File::readCSVtoArray("data/data.csv", 'Album');
-        $table = File::printArrayAsTable($records);
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        $table = File::printArrayAsTable($albums);
         echo $table;
     }
 
     public function testArrayPrintsKeys()
     {
-        $records = File::readCSVtoArray("data/data.csv", 'Album');
-        $fieldNames = File::printArrayKeys($records);
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        $fieldNames = File::printArrayKeys($albums);
         print_r($fieldNames);
     }
 

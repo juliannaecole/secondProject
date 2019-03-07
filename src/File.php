@@ -11,7 +11,7 @@ class File
 
     public static function readCSVtoArray(String $filename, String $class): array
     {
-        $records = Array();
+        $albums = Array();
         $count = 0;
         $fieldNames = '';
         if (($handle = fopen($filename, "r")) !== FALSE) {
@@ -20,26 +20,26 @@ class File
                 if ($count == 0) {
                     $fieldNames = $row;
                 } else {
-                    $records[] = array_combine($fieldNames, $row);
+                    $albums[] = array_combine($fieldNames, $row);
                 }
                 $count++;
             }
             fclose($handle);
         }
 
-        return $records;
+        return $albums;
     }
 
-    public static function printArrayKeys(Array $records): array
+    public static function printArrayKeys(Array $albums): array
     {
-        $fieldNames = array_keys($records[0]);
+        $fieldNames = array_keys($albums[0]);
         return $fieldNames;
     }
 
 
-     public static function printArrayAsTable(Array $records): string
+     public static function printArrayAsTable(Array $albums): string
     {
-        $fieldNames = array_keys($records[0]);
+        $fieldNames = array_keys($albums[0]);
 
         $table = "<table class=\"table\"><thead class=\"thead-dark\" style=\"font-family: 'Poppins', sans-serif;\"><tr>";
 
@@ -48,7 +48,7 @@ class File
             $table .= "    <th>" . $columnname . "</th>";
         }
         $table .= "</tr></thead><tbody style=\"font-family: 'Poppins', sans-serif;\">";
-        foreach ($records as $row)
+        foreach ($albums as $row)
         {
             $table .= "<tr>";
             $table .= "    <td>" . $row['Artist'] . "</td>";
