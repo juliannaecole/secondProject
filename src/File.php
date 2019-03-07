@@ -11,7 +11,7 @@ class File
 
     public static function readCSVtoArray(String $filename, String $class): array
     {
-        $records = Array(); //creating empty array
+        $records = Array();
         $count = 0;
         $fieldNames = '';
         if (($handle = fopen($filename, "r")) !== FALSE) {
@@ -39,15 +39,6 @@ class File
 
      public static function printArrayAsTable(Array $records): string
     {
-        /*
-        echo "\n\n";
-        echo "artist\ttitle\tyear\ttotalsongs\tgenre";
-
-        foreach ($records as $value)
-        {
-            echo "\n", $value['artist'], "\t\t\t\t\t\t\t\t", $value['title'], "\t\t\t\t\t\t\t", $value['year'], "\t\t\t\t\t\t\t", $value['totalsongs'], "\t\t\t\t\t\t\t", $value['genre'];
-        }
-        */
         $fieldNames = array_keys($records[0]);
 
         $table = "<table class=\"table\"><thead class=\"thead-dark\" style=\"font-family: 'Poppins', sans-serif;\"><tr>";

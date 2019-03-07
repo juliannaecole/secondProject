@@ -68,14 +68,14 @@ final class AlbumTest extends TestCase
     public function testAlbumHasGoodRating(): void
     {
         $this->assertTrue(
-            method_exists(Album::class, 'goodRating') //class and method
+            method_exists(Album::class, 'goodRating')
         );
     }
 
     public function testAlbumHasBadRating(): void
     {
         $this->assertTrue(
-            method_exists(Album::class, 'badRating') //class and method
+            method_exists(Album::class, 'badRating')
         );
     }
     public function testNevermindAlbumHasGoodRating(): void

@@ -9,12 +9,12 @@
 
 final class KidzBopChristmasAlbum extends Album
 {
-    public function goodRating(): int //tested by assertTrue method_exists (first)
+    public function goodRating(): int
     {
         return 1;
     }
 
-    public function badRating(): int //tested by assertTrue method_exists (second)
+    public function badRating(): int
     {
         return -1;
     }

@@ -9,18 +9,18 @@ declare(strict_types=1);
 
 abstract class Album
 {
-    public $artist; //tested by assertClassHasAttribute
+    public $artist;
     public $title;
     public $year;
     public $totalsongs;
     public $genre;
 
-    public function goodRating(): int //tested by assertTrue method_exists (first)
+    public function goodRating(): int
     {
 
     }
 
-    public function badRating(): int //tested by assertTrue method_exists (second)
+    public function badRating(): int
     {
 
     }

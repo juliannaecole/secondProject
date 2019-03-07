@@ -17,30 +17,38 @@ final class FileTest extends TestCase
 
     public function testFileObject()
     {
-        $this->assertInstanceOf(File::class, new File()); //testing that file object is an instance of File class
+        $this->assertInstanceOf(File::class, new File());
     }
 
     public function testReadCSVtoArrayExists()
     {
         $this->assertTrue(
-            method_exists(File::class, 'readCSVtoArray')  //test that the file can be read
+            method_exists(File::class, 'readCSVtoArray')
         );
 
     }
 
-    public function testReadCSVtoArray()  //"does it read it, does it turn back an array"
+    public function testReadCSVtoArray()
     {
-        $records = File::readCSVtoArray("data/data.csv", 'Album'); //the file that you want to read, calling the function and passing a string that's just 'Car'
+        $records = File::readCSVtoArray("data/data.csv", 'Album');
         print_r($records);
 
     }
     public function testPrintArrayKeysExists()
     {
         $this->assertTrue(
-            method_exists(File::class, 'printArrayAsTable')  //test that the file can be read
+            method_exists(File::class, 'printArrayKeys')
         );
 
     }
+    public function testPrintArrayAsTableExists()
+    {
+        $this->assertTrue(
+            method_exists(File::class, 'printArrayAsTable')
+        );
+
+    }
+
     public function testPrintArrayAsTable()
     {
         $records = File::readCSVtoArray("data/data.csv", 'Album');
