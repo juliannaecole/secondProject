@@ -41,7 +41,7 @@ final class FileTest extends TestCase
         );
 
     }
-    public function testPrintArrayAsTableExists()
+    /*public function testPrintArrayAsTableExists()
     {
         $this->assertTrue(
             method_exists(File::class, 'printArrayAsTable')
@@ -54,7 +54,7 @@ final class FileTest extends TestCase
         $albums = File::readCSVtoArray("data/data.csv", 'Album');
         $table = File::printArrayAsTable($albums);
         echo $table;
-    }
+    } */
 
     public function testArrayPrintsKeys()
     {
@@ -62,6 +62,36 @@ final class FileTest extends TestCase
         $fieldNames = File::printArrayKeys($albums);
         print_r($fieldNames);
     }
+
+    public function testPrintArrayValuesExists()
+    {
+        $this->assertTrue(
+            method_exists(File::class, 'printArrayValues')
+        );
+
+    }
+
+    public function testPrintArrayValues()
+    {
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        $table = File::printArrayValues($albums);
+        print_r($table);
+    }
+
+    public function testPrintArrayRowExists()
+    {
+        $this->assertTrue(
+            method_exists(File::class, 'printArrayRow')
+        );
+    }
+
+    public function testPrintArrayRow()
+    {
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        $table = File::printArrayRow($albums);
+        print_r($table);
+    }
+
 
 }
 

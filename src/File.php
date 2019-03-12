@@ -20,7 +20,7 @@ class File
                 if ($count == 0) {
                     $fieldNames = $row;
                 } else {
-                    $albums[] = array_combine($fieldNames, $row);
+                    $albums[] = (object)array_combine($fieldNames, $row);
                 }
                 $count++;
             }
@@ -32,16 +32,35 @@ class File
 
     public static function printArrayKeys(Array $albums): array
     {
-        $fieldNames = array_keys($albums[0]);
+        $fieldNames = array_keys(get_object_vars($albums[0]));
         return $fieldNames;
     }
 
-
-     public static function printArrayAsTable(Array $albums): string
+    public static function printArrayValues(Array $albums): array
     {
-        $fieldNames = array_keys($albums[0]);
+        $values = get_object_vars($albums[0]);
+        return $values;
+    }
 
-        $table = "<table class=\"table\"><thead class=\"thead-dark\" style=\"font-family: 'Poppins', sans-serif;\"><tr>";
+   public static function printArrayRow(Array $albums): array
+    {
+        $values = array();
+        for($i=0; $i <= (sizeof($albums)-1); $i++ )
+        {
+
+            $values[] = get_object_vars($albums[$i]);
+        }
+
+        return $values;
+    }
+
+
+  /*   public static function printArrayAsTable(Array $albums): string
+    {
+        $fieldNames = array_keys(get_object_vars($albums[0]));
+
+        $
+  table = "<table class=\"table\"><thead class=\"thead-dark\" style=\"font-family: 'Poppins', sans-serif;\"><tr>";
 
         foreach ($fieldNames as $columnname)
         {
@@ -60,9 +79,9 @@ class File
         }
 
         $table .= "</tbody></table>";
-        echo $table;
+        echo $table; //break into separate function
         return $table;
-    }
+    } */
 
 
 
