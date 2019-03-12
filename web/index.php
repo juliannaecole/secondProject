@@ -13,42 +13,46 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-white navbar-light" style="padding-top: 10px;padding-bottom: 10px">
-        <a class="navbar-brand text-body" style="font-family: 'Poppins', sans-serif;" href="#">Our Album Review</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="navbar">
-            <ul class="navbar-nav ml-auto" >
-                <li class="nav-item">
-                    <a class="nav-link px-2" href="https://github.com/ma867" style="color:black;font-family: 'Poppins', sans-serif;">Melissa's <span class="fa fa-github"></span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-2" href="https://github.com/juliannaecole" style="color:black; font-family: 'Poppins', sans-serif;">Julianna's <span class="fa fa-github"></span></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container" >
-        <div class="row">
-            <div class= "col-sm" style="font-family: 'Poppins', sans-serif;">
-                <br>
-                <h1>Welcome to our home page!</h1>
-                </br>
-                </br>
-            </div>
+<nav class="navbar navbar-expand-sm bg-white navbar-light" style="padding-top: 10px;padding-bottom: 10px">
+    <a class="navbar-brand text-body" style="font-family: 'Poppins', sans-serif;" href="#">Our Album Review</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link px-2" href="https://github.com/ma867"
+                   style="color:black;font-family: 'Poppins', sans-serif;">Melissa's <span class="fa fa-github"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-2" href="https://github.com/juliannaecole"
+                   style="color:black; font-family: 'Poppins', sans-serif;">Julianna's <span
+                            class="fa fa-github"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm" style="font-family: 'Poppins', sans-serif;">
+            <br>
+            <h1>Welcome to our home page!</h1>
+            </br>
+            </br>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm " >
-                <?php
-                    include ('../src/File.php');
-                    $records = File::readCSVtoArray("../data/data.csv", 'Album');
-                    $table = File::printArrayAsTable($records);
-                 ?>
-            </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm ">
+            <?php
+            include('../src/File.php');
+            $records = File::readCSVtoArray("../data/data.csv", 'Album');
+            $table = File::printArrayAsTable($records);
+            echo $table;
+            ?>
         </div>
     </div>
+</div>
 </body>
 </html>
