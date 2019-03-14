@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
-final class HtlmTagTest extends TestCase
+final class HtlmTagsTest extends TestCase
 {
     public function testBeginOfTableExists()
     {
