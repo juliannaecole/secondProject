@@ -20,18 +20,16 @@ class File
         $albums = ArrayFunctions::makeArray();
         $count = 0;
         $fieldNames = '';
-        if (($handle = CsvFunctions::openCSVFile($filename)) !== FALSE) {
-            while (($row = CsvFunctions::retrieveRowsFromCSVFile($handle)) !== FALSE) {
-                if ($count == 0) {
-                    $fieldNames = $row;
-                } else {
-                   $albums[] =(object)RecordFactory::buildArray($fieldNames, $row);
-                }
-                $count++;
+        $handle = CsvFunctions::openCSVFile($filename);
+        while ($row = CsvFunctions::retrieveRowsFromCSVFile($handle)) {
+            if ($count == 0) {
+                $fieldNames = $row;
+            } else {
+               $albums[] =(object)RecordFactory::buildArray($fieldNames, $row);
             }
-            CsvFunctions::closeCSV($handle);
+            $count++;
         }
-
+        CsvFunctions::closeCSV($handle);
         return $albums;
     }
 
