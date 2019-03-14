@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class CsvFunctionsTest extends TestCase
 {
-    public function testopenCSVFileExists()
+    public function testOpenCSVFileExists()
     {
         $this->assertTrue(
             method_exists(CsvFunctions::class, 'openCSVFile')

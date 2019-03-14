@@ -20,8 +20,8 @@ final class ArrayFunctionsTest extends TestCase
     }
       public function testArrayPrintsKeys()
     {
-        $albums = File::readCSVtoArray("data/data.csv", 'Album');
-        print_r(ArrayFunctions::printArrayKeys($albums));
+        $records = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r(ArrayFunctions::printArrayKeys($records));
     }
     public function testGetSizeOfAlbumExists()
     {
@@ -31,8 +31,8 @@ final class ArrayFunctionsTest extends TestCase
     }
     public function testGetSizeOfAlbum()
     {
-        $albums = File::readCSVtoArray("data/data.csv", 'Album');
-        print_r(ArrayFunctions::getSizeOfAlbum($albums));
+        $records = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r(ArrayFunctions::getSizeOfAlbum($records));
     }
     public function testGetObjectVariableFromArrayExists()
     {
@@ -42,8 +42,8 @@ final class ArrayFunctionsTest extends TestCase
     }
     public function testGetObjectVariableFromArray()
     {
-        $albums = File::readCSVtoArray("data/data.csv", 'Album');
-        print_r(ArrayFunctions::getObjectVariableFromArray((object)$albums));
+        $records = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r(ArrayFunctions::getObjectVariableFromArray((object)$records));
     }
     public function testPrintArrayValuesExists()
     {
@@ -54,8 +54,8 @@ final class ArrayFunctionsTest extends TestCase
     }
     public function testPrintArrayValues()
     {
-        $albums = File::readCSVtoArray("data/data.csv", 'Album');
-        print_r(ArrayFunctions::printArrayValues($albums));
+        $records = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r(ArrayFunctions::printArrayValues($records));
     }
 
     public function testMakeArrayExists()

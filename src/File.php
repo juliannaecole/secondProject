@@ -17,7 +17,7 @@ class File
 
     public static function readCSVtoArray(String $filename, String $class): array
     {
-        $albums = ArrayFunctions::makeArray();
+        $records = ArrayFunctions::makeArray();
         $count = 0;
         $fieldNames = '';
         $handle = CsvFunctions::openCSVFile($filename);
@@ -25,19 +25,19 @@ class File
             if ($count == 0) {
                 $fieldNames = $row;
             } else {
-               $albums[] =(object)RecordFactory::buildArray($fieldNames, $row);
+                $records[] =(object)RecordFactory::buildArray($fieldNames, $row);
             }
             $count++;
         }
         CsvFunctions::closeCSV($handle);
-        return $albums;
+        return $records;
     }
 
-    public static function printArrayAsTable(Array $albums): string
+    public static function printArrayAsTable(Array $records): string
     {
         $row = (HtmlTags::BeginOfHtml());
-        $fieldnames = ArrayFunctions::printArrayKeys($albums);
-        $values = ArrayFunctions::printArrayValues($albums);
+        $fieldnames = ArrayFunctions::printArrayKeys($records);
+        $values = ArrayFunctions::printArrayValues($records);
         foreach ($fieldnames as $fieldname)
         {
             $row .= HtmlTags::HeaderCellTags($fieldname);

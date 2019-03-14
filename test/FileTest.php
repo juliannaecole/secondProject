@@ -42,8 +42,8 @@ final class FileTest extends TestCase
 
     public function testPrintArrayAsTable()
     {
-        $albums = File::readCSVtoArray("data/data.csv", 'Album');
-        echo File::printArrayAsTable($albums);
+        $records = File::readCSVtoArray("data/data.csv", 'Album');
+        echo File::printArrayAsTable($records);
     }
 
 }

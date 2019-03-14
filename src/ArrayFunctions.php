@@ -12,26 +12,26 @@ class ArrayFunctions
     {
         return array_combine($key, $val);
     }
-    public static function printArrayKeys(Array $albums)
+    public static function printArrayKeys(Array $records)
     {
-        return array_keys(self::getObjectVariableFromArray($albums[0]));
+        return array_keys(self::getObjectVariableFromArray($records[0]));
 
     }
-    public static function getSizeOfAlbum(Array $albums)
+    public static function getSizeOfAlbum(Array $records)
     {
-        return (sizeof($albums)-1);
+        return (sizeof($records)-1);
 
     }
-    public static function getObjectVariableFromArray($albums)
+    public static function getObjectVariableFromArray($records)
     {
-        return (get_object_vars($albums));
+        return (get_object_vars($records));
     }
-    public static function printArrayValues(Array $albums)
+    public static function printArrayValues(Array $records)
     {
         $values = self::makeArray();
-        for($i=0; $i <= self::getSizeOfAlbum($albums); $i++ )
+        for($i=0; $i <= self::getSizeOfAlbum($records); $i++ )
         {
-            $values[] = self::getObjectVariableFromArray($albums[$i]);
+            $values[] = self::getObjectVariableFromArray($records[$i]);
         }
         return $values;
     }
