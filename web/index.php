@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-sm ">
             <?php
-            include('../src/File.php');
+            include ('../src/File.php');
             $records = File::readCSVtoArray("../data/data.csv", 'Album');
             $table = File::printArrayAsTable($records);
             echo $table;

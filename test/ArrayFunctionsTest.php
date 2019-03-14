@@ -1,13 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: julia
- * Date: 3/12/2019
- * Time: 7:08 PM
+ * User: MAlzate
+ * Date: 3/13/2019
+ * Time: 11:39 AM
  */
-
 declare(strict_types=1);
+
 use PHPUnit\Framework\TestCase;
+
 final class ArrayFunctionsTest extends TestCase
 {
     public function testPrintArrayKeysExists()
@@ -15,12 +16,12 @@ final class ArrayFunctionsTest extends TestCase
         $this->assertTrue(
             method_exists(ArrayFunctions::class, 'printArrayKeys')
         );
+
     }
-    public function testArrayPrintsKeys()
+      public function testArrayPrintsKeys()
     {
-        $records = File::readCSVtoArray("data/data.csv", 'Album');
-        $fieldNames = ArrayFunctions::printArrayKeys($records);
-        print_r($fieldNames);
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r(ArrayFunctions::printArrayKeys($albums));
     }
 
     public function testPrintArrayValuesExists()
@@ -28,12 +29,20 @@ final class ArrayFunctionsTest extends TestCase
         $this->assertTrue(
             method_exists(ArrayFunctions::class, 'printArrayValues')
         );
+
+    }
+    public function testPrintArrayValues()
+    {
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r(ArrayFunctions::printArrayValues($albums));
     }
 
-    public function testArrayPrintsValues()
+    public function testMakeArrayExists()
     {
-        $records = File::readCSVtoArray("data/data.csv", 'Album');
-        $table = ArrayFunctions::printArrayValues($records);
-        print_r($table);
+        $this->assertTrue(
+            method_exists(ArrayFunctions::class, 'printArrayValues')
+        );
+
     }
+
 }

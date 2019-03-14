@@ -1,30 +1,33 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: julia
+ * User: MAlzate
  * Date: 3/12/2019
- * Time: 6:02 PM
+ * Time: 10:28 PM
  */
 
 class ArrayFunctions
 {
-    public function arrayCombine($fieldNames,$values)
+    public static function combineArray(array $key,array $val)
     {
-        $records = array_combine($fieldNames, $values);
+        return array_combine($key, $val);
     }
-    public static function printArrayKeys(Array $records): array
+    public static function printArrayKeys(Array $albums)
     {
-        $fieldNames = array_keys(get_object_vars($records[0]));
-        return $fieldNames;
-    }
+        return array_keys(get_object_vars($albums[0]));
 
-    public static function printArrayValues(Array $records): array
+    }
+    public static function printArrayValues(Array $albums)
     {
-        $values = array();
-        for($i=0; $i <= (sizeof($records)-1); $i++ )
+        $values = self::makeArray();
+        for($i=0; $i <= (sizeof($albums)-1); $i++ )
         {
-            $values[] = get_object_vars($records[$i]);
+            $values[] = get_object_vars($albums[$i]);
         }
         return $values;
+    }
+    public static function makeArray()
+    {
+        return  Array();
     }
 }

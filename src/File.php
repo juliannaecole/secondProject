@@ -4,60 +4,58 @@
  * User: julia
  * Date: 2/21/2019
  * Time: 11:36 AM
- */class File
+ *
+ *
+ */
+include_once "CsvFunctions.php";
+include_once "ArrayFunctions.php";
+include_once "RecordFactory.php";
+include_once "Records.php";
+include_once "HtmlTags.php";
+class File
 {
-    public static function openCSVFile(String $filename)
-    {
-        $openedFile = fopen($filename, "r");
-        return $openedFile;
-    }
-
-    public static function retrieveRowsFromCSVFile($openedFile): array
-    {
-        $openedFile = self::openCSVFile($openedFile);
-        $tableRow = fgetcsv($openedFile, 1000, ",");
-        return $tableRow;
-    }
 
     public static function readCSVtoArray(String $filename, String $class): array
     {
-        $records = Array();
+        $albums = ArrayFunctions::makeArray();
         $count = 0;
-        $fieldNames = array();
-        if (($handle = self::openCSVFile($filename)) !== FALSE) {
-            while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $fieldNames = '';
+        if (($handle = CsvFunctions::openCSVFile($filename)) !== FALSE) {
+            while (($row = CsvFunctions::retrieveRowsFromCSVFile($handle)) !== FALSE) {
                 if ($count == 0) {
                     $fieldNames = $row;
-                } else
-                    {
-                    $records[] = Factory::buildArray($fieldNames, $row);
-                    }
+                } else {
+                   $albums[] =(object)RecordFactory::buildArray($fieldNames, $row);
+                }
                 $count++;
             }
-            fclose($handle);
-        }        return $records;
+            CsvFunctions::closeCSV($handle);
+        }
+
+        return $albums;
     }
 
-        public static function printArrayAsTable(Array $records): string
+    public static function printArrayAsTable(Array $albums): string
+    {
+        $row = (HtmlTags::BeginOfHtml());
+        $fieldnames = ArrayFunctions::printArrayKeys($albums);
+        $values = ArrayFunctions::printArrayValues($albums);
+        foreach ($fieldnames as $fieldname)
         {
-            $row ="<table class=\"table\"><thead class=\"thead-dark\" style=\"font-family: \'Poppins\', sans-serif;\"><tr>";
-            $fieldnames = ArrayFunctions::printArrayKeys($records);
-            $values = ArrayFunctions::printArrayValues($records);
-            foreach ($fieldnames as $fieldname)
-            {
-                $row .= "<th>" . $fieldname . "</th>";
-            }
-            $row .= "</tr></thead><tbody style=\"font-family: 'Poppins', sans-serif;\">";
-            foreach ($values as $value)
-            {
-                $row .= "<tr>";
-                foreach ($fieldnames as $fieldname)
-            {
+            $row .= HtmlTags::HeaderCellTags($fieldname);
+        }
+        $row .= (HtmlTags::MidOfHtml());
+        foreach ($values as $value)
+        {
+            $row .= HtmlTags::BeginOfRow();
+            foreach ($fieldnames as $fieldname) {
+
                 $row .= "<td>" . $value[$fieldname] . "</td>";
             }
-            $row .= "</tr>";
+            $row .= HtmlTags::EndOfRow();
         }
-        $row .= "</tbody></table>";
+        $row .= (HtmlTags::EndOfHtml());
         return $row;
     }
+
 }
