@@ -17,5 +17,7 @@
             "email": "jec56@njit.edu"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^7.2.0"
+    }
 }

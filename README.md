@@ -1,3 +1,6 @@
+# Table Project
+**_Partners Melissa and Julianna met for several days over the past few weeks, so most commits were made together._**
+
 # Definitions of PHP Syntax
 
 **_<?php_** - The opening tag for the file that tells PHP to start interpreting the code; anything that is not between the opening tag and closing tag **_<?_** is ignored 
