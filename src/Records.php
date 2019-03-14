@@ -12,7 +12,7 @@ class Records
     {
         $records = ArrayFunctions::combineArray($fieldNames, $values);
         foreach ($records as $column => $value) {
-            $this->createCell($column, $value);
+            self::createCell($column, $value);
         }
     }
     public function createCell($column, $value) {
