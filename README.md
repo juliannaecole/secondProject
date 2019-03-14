@@ -1,5 +1,6 @@
 # Table Project
 **_Partners Melissa and Julianna met for several days over the past few weeks, so most commits were made together._**
+
 **_NOTE: To see program at work, clone and run index.php locally._**
 # Definitions of PHP Syntax
 
