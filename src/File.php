@@ -50,7 +50,7 @@ class File
             $row .= HtmlTags::BeginOfRow();
             foreach ($fieldnames as $fieldname) {
 
-                $row .= "<td>" . $value[$fieldname] . "</td>";
+                $row .= HtmlTags::RowCellTags($value[$fieldname]);
             }
             $row .= HtmlTags::EndOfRow();
         }
