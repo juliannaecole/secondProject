@@ -23,7 +23,28 @@ final class ArrayFunctionsTest extends TestCase
         $albums = File::readCSVtoArray("data/data.csv", 'Album');
         print_r(ArrayFunctions::printArrayKeys($albums));
     }
-
+    public function testGetSizeOfAlbumExists()
+    {
+        $this->assertTrue(
+            method_exists(ArrayFunctions::class, 'getSizeOfAlbum')
+        );
+    }
+    public function testGetSizeOfAlbum()
+    {
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r(ArrayFunctions::getSizeOfAlbum($albums));
+    }
+    public function testGetObjectVariableFromArrayExists()
+    {
+        $this->assertTrue(
+            method_exists(ArrayFunctions::class, 'getObjectVariableFromArray')
+        );
+    }
+    public function testGetObjectVariableFromArray()
+    {
+        $albums = File::readCSVtoArray("data/data.csv", 'Album');
+        print_r(ArrayFunctions::getObjectVariableFromArray((object)$albums));
+    }
     public function testPrintArrayValuesExists()
     {
         $this->assertTrue(

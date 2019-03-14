@@ -14,15 +14,24 @@ class ArrayFunctions
     }
     public static function printArrayKeys(Array $albums)
     {
-        return array_keys(get_object_vars($albums[0]));
+        return array_keys(self::getObjectVariableFromArray($albums[0]));
 
+    }
+    public static function getSizeOfAlbum(Array $albums)
+    {
+        return (sizeof($albums)-1);
+
+    }
+    public static function getObjectVariableFromArray($albums)
+    {
+        return (get_object_vars($albums));
     }
     public static function printArrayValues(Array $albums)
     {
         $values = self::makeArray();
-        for($i=0; $i <= (sizeof($albums)-1); $i++ )
+        for($i=0; $i <= self::getSizeOfAlbum($albums); $i++ )
         {
-            $values[] = get_object_vars($albums[$i]);
+            $values[] = self::getObjectVariableFromArray($albums[$i]);
         }
         return $values;
     }
