@@ -7,11 +7,14 @@
  *
  *
  */
+/*
 include_once "CsvFunctions.php";
 include_once "ArrayFunctions.php";
 include_once "RecordFactory.php";
 include_once "Records.php";
 include_once "HtmlTags.php";
+*/
+include "Autoload.php";
 class File
 {
 
