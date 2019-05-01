@@ -2,10 +2,8 @@
     "name": "julia/second-project",
     "type": "project",
     "autoload": {
-        "classmap": [
-            "src/"
-        ]
-    },
+        "classmap": ["src/", "src/db", "src/file"]
+       },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
     },
@@ -18,6 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.2.0"
+        "php": "^7.2.0",
+        "ext-pdo": "*"
     }
 }
