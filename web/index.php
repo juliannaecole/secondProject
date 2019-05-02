@@ -48,23 +48,21 @@
             <?php
             include('../src/File.php');
             include('../src/db/SQLiteConnection.php');
-            $records = File::readCSVtoArray("../data/data.csv", 'Album');
-            $table = File::printArrayAsTable($records);
-            echo $table;
+           // $records = File::readCSVtoArray("../data/data.csv", 'Album');
+          //  $table = File::printArrayAsTable($records);
+           // echo $table;
 
-            $pdo = (new SQLiteConnection())->connect();
+            global $pdo;
+            $pdo= (new SQLiteConnection())->connect();
             if ($pdo != null)
                 echo 'Connected to the SQLite database successfully!';
             else
                 echo 'Whoops, could not connect to the SQLite database!';
 
-            $stmt = $pdo->prepare('SELECT * FROM contacts');
-            $stmt->execute();
-
-            ?>
+                    ?>
             <form action="../src/Upload.php" method="post" enctype="multipart/form-data">
                 Select file to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="file" name="fileUploaded" id="fileUploaded">
                 <input type="submit" value="Upload File" name="submit">
             </form>
         </div>

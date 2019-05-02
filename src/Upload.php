@@ -5,34 +5,49 @@
  * Date: 4/9/2019
  * Time: 7:31 PM
  */
-$currentDir = getcwd();
-$uploadDirectory = "/uploads/";
-$errors = []; // Store all foreseen and unforseen errors here
-$fileExtensions = ['csv','xlsx']; // Get all the file extensions
-$fileName = $_FILES['fileToUpload']['name'];
-$fileSize = $_FILES['fileToUpload']['size'];
-$fileTmpName  = $_FILES['fileToUpload']['tmp_name'];
-$fileType = $_FILES['fileToUpload']['type'];
-$tmp = explode('.', $fileName);
-$fileExtension = end($tmp);
-$uploadPath = $currentDir . $uploadDirectory . basename($fileName);
+include('../src/File.php');
+include('../src/db/SQLiteConnection.php');
+include('../src/SQLiteFunctions.php');
+include('../src/HtmlTags.php');
+
+
+$allowedFileExtensions = ['csv','xlsx'];
+$fileName = $_FILES['fileUploaded']['name'];
+$fileTemporaryName  = $_FILES['fileUploaded']['tmp_name'];
+$fileSize = $_FILES['fileUploaded']['size'];
+$fileType = $_FILES['fileUploaded']['type'];
+$temp = explode('.', $fileName);
+$fileExtension = end($temp);
+$uploadPath = getcwd() . "/uploads/" . basename($fileName);
+$errors = [];
+
 if (isset($_POST['submit'])) {
-    if (! in_array($fileExtension,$fileExtensions)) {
-        $errors[] = "This file extension is not allowed. Please upload a csv or a xlsx";
+    if (! in_array($fileExtension,$allowedFileExtensions)) {
+        $errors[] = "This file extension is not a csv or a xlsx try again";
     }
     if ($fileSize > 2000000) {
-        $errors[] = "This file is more than 2MB. Sorry, it has to be less than or equal to 2MB";
+        $errors[] = "This file is more than 2MB. Try again.";
     }
     if (empty($errors)) {
-        $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+        $didUpload = move_uploaded_file($fileTemporaryName, $uploadPath);
         if ($didUpload) {
-            echo "The file " . basename($fileName) . " has been uploaded";
+            echo basename($fileName) . " has been uploaded";
+
+            $records = File::readCSVtoArray($uploadPath, 'Album');
+            SQLiteFunctions::createTableInDatabase($records);
+            SQLiteFunctions::addValuestoTableInDatabase($records);
+
+
+            $table = HtmlTags::bootstrapDocumentation(). HtmlTags::BeginContainer() . File::printArrayAsTable($records) . HtmlTags::CloseContainer();
+            echo $table ;
+
         } else {
-            echo "An error occurred somewhere. Try again or contact the admin";
+            echo "There was an error adding to the database";
         }
-    } else {
+    }
+    else {
         foreach ($errors as $error) {
-            echo $error . "These are the errors" . "\n";
+            echo $error;
         }
     }
 }
